@@ -10,7 +10,7 @@ import java.util.Scanner;
 7)Mostrar el primer elemnto.....Completo
 8)Mostrar el ultimo elemento....Completo
 9)Aumentar el tamaño del arreglo ..Completo
-10)Disminuir el tamaño del arreglo
+10)Disminuir el tamaño del arreglo..Completo
 11)Insertar elemto en pocicion especifica
 12)eleminar el elemrnto de pocicion especifica
 13)Invertir vector
@@ -78,20 +78,30 @@ class VectorEspecial{
 		}while(bandera==false);
 		
 	}
-	public void disminurTamañoArreglo(int tamañoNuevo) {
+	public void disminurTamañoArreglo() {
 		boolean bandera=false;
+		System.out.println("Ingresa el tamaño que deseas para aumentar el tamaño");
+		int tamaño=entrada.nextInt();
 		do {
-		if(tamañoNuevo<edades.length) {
+		if(tamaño<edades.length) {
 			bandera=true;
-			edades=new int [tamañoNuevo];
+			edades=new int [tamaño];
 		}else {
 			System.out.println("Error el dato que ingresaste no es menor el numero debe de ser menor a: "+edades.length);
 			System.out.println("Ingresa el tamaño que deseas para disminuir el tamaño el tamaño");
-			tamañoNuevo=entrada.nextInt();
+			tamaño=entrada.nextInt();
 		}
 		}while(bandera==false);
 		
 	}
+	public void insertarElementoPocicionEspecifica(byte poci,byte dato) {
+		try {
+			edades[poci]=dato;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 }
 public class PruebaVectorEspecial {
 
@@ -118,9 +128,12 @@ public class PruebaVectorEspecial {
 		ve3.mostrarUltimoElemento();
 		System.out.println("----------------9----------");
 		ve3.aumentarTamañoArreglo();
-		System.out.println("El tmaño a sido cambiado correctamente a: "+ve3.getEdades().length);
+		System.out.println("El tamaño a sido cambiado correctamente a: "+ve3.getEdades().length);
 		System.out.println("----------------10----------");
-		System.out.println("Ingresa el tamaño que deseas para disminu");
+		ve3.disminurTamañoArreglo();
+		System.out.println("El tamaño a sido reducido correctamente a: "+ve3.getEdades().length);
+		System.out.println("----------------11----------");
+		ve3.insertarElementoPocicionEspecifica((byte) 100,(byte) 5);
 	}
 
 }
