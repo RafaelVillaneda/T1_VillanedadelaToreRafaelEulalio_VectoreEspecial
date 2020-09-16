@@ -62,15 +62,31 @@ class VectorEspecial{
 	public void mostrarUltimoElemento() {
 		System.out.println("El ultimo elemento es: "+edades[edades.length-1]);
 	}
-	public void aumentarTamañoArreglo(int tamañoNuevo) {
+	public void aumentarTamañoArreglo() {
 		boolean bandera=false;
+		System.out.println("Ingresa el tamaño que deseas para aumentar el tamaño");
+		int tamaño=entrada.nextInt();
 		do {
-		if(tamañoNuevo>edades.length) {
+		if(tamaño>edades.length) {
 			bandera=true;
-			edades=new int [tamañoNuevo];
+			edades=new int [tamaño];
 		}else {
 			System.out.println("Error el dato que ingresaste no es mayor el numero debe de ser mayor a: "+edades.length);
 			System.out.println("Ingresa el tamaño que deseas para aumentar el tamaño");
+			tamaño=entrada.nextInt();
+		}
+		}while(bandera==false);
+		
+	}
+	public void disminurTamañoArreglo(int tamañoNuevo) {
+		boolean bandera=false;
+		do {
+		if(tamañoNuevo<edades.length) {
+			bandera=true;
+			edades=new int [tamañoNuevo];
+		}else {
+			System.out.println("Error el dato que ingresaste no es menor el numero debe de ser menor a: "+edades.length);
+			System.out.println("Ingresa el tamaño que deseas para disminuir el tamaño el tamaño");
 			tamañoNuevo=entrada.nextInt();
 		}
 		}while(bandera==false);
@@ -101,11 +117,10 @@ public class PruebaVectorEspecial {
 		System.out.println("----------------8----------");
 		ve3.mostrarUltimoElemento();
 		System.out.println("----------------9----------");
-		System.out.println("Ingresa el tamaño que deseas para aumentar el tamaño");
-		int tamaño=entrada.nextInt();
-		ve3.aumentarTamañoArreglo(tamaño);
+		ve3.aumentarTamañoArreglo();
 		System.out.println("El tmaño a sido cambiado correctamente a: "+ve3.getEdades().length);
-		
+		System.out.println("----------------10----------");
+		System.out.println("Ingresa el tamaño que deseas para disminu");
 	}
 
 }
