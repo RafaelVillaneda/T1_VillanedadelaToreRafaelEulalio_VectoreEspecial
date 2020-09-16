@@ -11,9 +11,9 @@ import java.util.Scanner;
 8)Mostrar el ultimo elemento....Completo
 9)Aumentar el tamaño del arreglo ..Completo
 10)Disminuir el tamaño del arreglo..Completo
-11)Insertar elemto en pocicion especifica
-12)eleminar el elemrnto de pocicion especifica
-13)Invertir vector
+11)Insertar elemto en pocicion especifica.....Completo
+12)eleminar el elemrnto de pocicion especifica....Completo
+13)Invertir vector................................Completo
  *
  */
 class VectorEspecial{
@@ -97,9 +97,27 @@ class VectorEspecial{
 	public void insertarElementoPocicionEspecifica(byte poci,byte dato) {
 		try {
 			edades[poci]=dato;
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("La pocicion ingresada no existe");
 		}
+		
+	}
+	public void eliminarElementoPocicionEspecifica(int poci) {
+		try {
+			edades[poci]=0;
+		} catch (ArrayIndexOutOfBoundsException e) {
+			System.out.println("La pocicion ingresada no existe");
+		}
+	}
+	public void invertirVector() {
+		byte x=0;
+		int vectorInertido[]=new int[edades.length];
+		for(int i=edades.length-1;i>=0;i--) {
+			//System.out.println(edades[i]);
+			vectorInertido[x]=edades[i];
+			x++;
+		}
+		edades=vectorInertido;
 	}
 	
 }
@@ -134,6 +152,11 @@ public class PruebaVectorEspecial {
 		System.out.println("El tamaño a sido reducido correctamente a: "+ve3.getEdades().length);
 		System.out.println("----------------11----------");
 		ve3.insertarElementoPocicionEspecifica((byte) 100,(byte) 5);
+		System.out.println("----------------12----------");
+		ve3.eliminarElementoPocicionEspecifica(2);
+		System.out.println("----------------13----------");
+		ve3.invertirVector();
+		
 	}
 
 }
