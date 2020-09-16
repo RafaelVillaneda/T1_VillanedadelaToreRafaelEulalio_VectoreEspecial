@@ -5,9 +5,9 @@ import java.util.Scanner;
 2)Llenar........................Completo
 3) Obtener pocicion de inicio...Completo
 4)Obtener pocicion final........Completo
-5)Obtener catidad de elementos
+5)Obtener catidad de elementos..Completo
 6)Mostrar todos los elemntos....Completo
-7)Mostrar el primer elemnto
+7)Mostrar el primer elemnto.....Completo
 8)Mostrar el ultimo elemento
 9)Aumentar el tamaño del arreglo
 10)Disminuir el tamaño del arreglo
@@ -41,6 +41,15 @@ class VectorEspecial{
 	public int obtenerPocicionFinal() {
 		return edades[edades.length-1];
 	}
+	public int obtenerCnatidadElemtos() {
+		return edades.length;
+	}
+	public void mostrarPrimerElemento() {
+		System.out.println("El primer elemento es: "+edades[0]);
+	}
+	public void mostrarUltimoElemento() {
+		System.out.println("El ultimo elemento es: "+edades[edades.length-1]);
+	}
 	
 }
 public class PruebaVectorEspecial {
@@ -58,9 +67,14 @@ public class PruebaVectorEspecial {
 		System.out.println("-------------4---------------");
 		int pociFinal=ve3.obtenerPocicionFinal();
 		System.out.println("Se obtuvo el dato Final");
+		System.out.println("--------------5--------------");
+		System.out.println("La cantidad de elementos es: "+ve3.obtenerCnatidadElemtos());
 		System.out.println("----------------6----------");
 		ve3.mostrarVector();
-
+		System.out.println("----------------7----------");
+		ve3.mostrarPrimerElemento();
+		System.out.println("----------------8----------");
+		ve3.mostrarUltimoElemento();
 	}
 
 }
