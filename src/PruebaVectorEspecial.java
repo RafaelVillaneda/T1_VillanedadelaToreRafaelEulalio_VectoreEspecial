@@ -186,24 +186,33 @@ public class PruebaVectorEspecial {
 		case "10":
 			int poci=0,dato=0;
 			try {
-			System.out.println("Ingresa la pocicion que desas ingresar tu dato");
-			poci=entrada.nextInt();
-			System.out.println("Ingresa el dato que deseas ingresar");
+				System.out.println("Ingresa la pocicion que desas ingresar tu dato");
+				poci=entrada.nextInt();
+				System.out.println("Ingresa el dato que deseas ingresar");
 				dato=entrada.nextInt();
+				ve3.insertarElementoPocicionEspecifica((byte)poci,(byte) dato);
 			} catch (InputMismatchException e) {
 				System.out.println("Error no ingresate un dato numerico entero");
 			}
-			
+			break;
+		case "11":
+			try {
+				System.out.println("Ingresa la pocicion que desas eliminar su dato");
+				poci=entrada.nextInt();
+				ve3.eliminarElementoPocicionEspecifica(poci);
+			} catch (InputMismatchException e) {
+				System.out.println("Error no ingresate un dato numerico entero");
+			}
+			break;
+		case "12":
+			ve3.invertirVector();
+			System.out.println("El vector invertido es: "+Arrays.toString(ve3.getEdades()));
 			break;
 		default:
+			System.out.println("La opcion elegida no existe");
 			break;
 		}// switch
-		System.out.println("----------------11----------");
-		ve3.insertarElementoPocicionEspecifica((byte) 100,(byte) 5);
-		System.out.println("----------------12----------");
-		ve3.eliminarElementoPocicionEspecifica(2);
-		System.out.println("----------------13----------");
-		ve3.invertirVector();
+		
 		}while(!op.equalsIgnoreCase("13"));
 	}
 
