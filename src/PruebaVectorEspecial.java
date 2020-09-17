@@ -30,7 +30,7 @@ class VectorEspecial{
 	public int[] getEdades() {
 		return edades;
 	}
-
+	
 
 	public void setEdades(int[] edades) {
 		this.edades = edades;
@@ -62,36 +62,38 @@ class VectorEspecial{
 	public void mostrarUltimoElemento() {
 		System.out.println("El ultimo elemento es: "+edades[edades.length-1]);
 	}
-	public void aumentarTamañoArreglo() {
-		boolean bandera=false;
-		System.out.println("Ingresa el tamaño que deseas para aumentar el tamaño");
-		int tamaño=entrada.nextInt();
-		do {
+	public void aumentarTamañoArreglo(int tamaño) {
+		//clone crea otro vector
+		int array[]=edades.clone();
+		
 		if(tamaño>edades.length) {
-			bandera=true;
-			edades=new int [tamaño];
+			edades=new int[tamaño];
+			for(int i=0;i<array.length;i++) {
+				edades[i]=array[i];
+			}
+			System.out.println("Tamaño edades"+edades.length+Arrays.toString(edades));
 		}else {
 			System.out.println("Error el dato que ingresaste no es mayor el numero debe de ser mayor a: "+edades.length);
 			System.out.println("Ingresa el tamaño que deseas para aumentar el tamaño");
 			tamaño=entrada.nextInt();
 		}
-		}while(bandera==false);
+		
 		
 	}
-	public void disminurTamañoArreglo() {
-		boolean bandera=false;
-		System.out.println("Ingresa el tamaño que deseas para aumentar el tamaño");
-		int tamaño=entrada.nextInt();
-		do {
+	public void disminurTamañoArreglo(int tamaño) {
+		int array[]=new int[tamaño];
 		if(tamaño<edades.length) {
-			bandera=true;
+			for (int i = 0; i < array.length; i++) {
+				array[i]=edades[i];
+			}
 			edades=new int [tamaño];
+			for (int i = 0; i < edades.length; i++) {
+				edades[i]=array[i];
+			}
+			System.out.println(Arrays.toString(edades));
 		}else {
 			System.out.println("Error el dato que ingresaste no es menor el numero debe de ser menor a: "+edades.length);
-			System.out.println("Ingresa el tamaño que deseas para disminuir el tamaño el tamaño");
-			tamaño=entrada.nextInt();
 		}
-		}while(bandera==false);
 		
 	}
 	public void insertarElementoPocicionEspecifica(byte poci,byte dato) {
@@ -145,10 +147,14 @@ public class PruebaVectorEspecial {
 		System.out.println("----------------8----------");
 		ve3.mostrarUltimoElemento();
 		System.out.println("----------------9----------");
-		ve3.aumentarTamañoArreglo();
+		System.out.println("Ingresa el tamaño que deseas para aumentar el tamaño");
+		int tamaño=entrada.nextInt();
+		ve3.aumentarTamañoArreglo(tamaño);
 		System.out.println("El tamaño a sido cambiado correctamente a: "+ve3.getEdades().length);
 		System.out.println("----------------10----------");
-		ve3.disminurTamañoArreglo();
+		System.out.println("Ingresa el tamaño que deseas para disminuir el tamaño");
+		tamaño=entrada.nextInt();
+		ve3.disminurTamañoArreglo(tamaño);
 		System.out.println("El tamaño a sido reducido correctamente a: "+ve3.getEdades().length);
 		System.out.println("----------------11----------");
 		ve3.insertarElementoPocicionEspecifica((byte) 100,(byte) 5);
