@@ -208,6 +208,9 @@ public class PruebaVectorEspecial {
 			ve3.invertirVector();
 			System.out.println("El vector invertido es: "+Arrays.toString(ve3.getEdades()));
 			break;
+			case "13":
+				System.out.println("Gracias por usar este programa :D");
+				break;
 		default:
 			System.out.println("La opcion elegida no existe");
 			break;
