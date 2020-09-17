@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /*1)Crear.......................Completo
@@ -74,8 +75,6 @@ class VectorEspecial{
 			System.out.println("Tamaño edades"+edades.length+Arrays.toString(edades));
 		}else {
 			System.out.println("Error el dato que ingresaste no es mayor el numero debe de ser mayor a: "+edades.length);
-			System.out.println("Ingresa el tamaño que deseas para aumentar el tamaño");
-			tamaño=entrada.nextInt();
 		}
 		
 		
@@ -128,56 +127,84 @@ public class PruebaVectorEspecial {
 	public static void main(String[] args) {
 		Scanner entrada=new Scanner(System.in);
 		String op=null;
-		System.out.println("-------------1---------------");
+		int tamaño=0;
 		VectorEspecial ve3=new VectorEspecial(3);
-		System.out.println("-------------2---------------");
-		ve3.llenarVector();
+		do {
+		System.out.println("El vetor de forma predeterminada se crea con un tamaño de 3 pociciones");
 		System.out.println("Seleciona la opcion que necesites:");
 		System.out.println("1-Llenar vector");
 		System.out.println("2-Obtener pocicion de inicio.");
 		System.out.println("3-Obtener pocicion final.");
-		System.out.println("5-Obtener catidad de elementos");
-		System.out.println("6-Mostrar todos los elementos.");
-		System.out.println("7-Mostrar el primer elemnto.");
-		System.out.println("8-Mostrar el ultimo elemento");
-		System.out.println("9-Aumentar el tamaño del arreglo");
-		System.out.println("10-Disminuir el tamaño del arreglo");
-		System.out.println("11-Insertar elemto en pocicion especifica.");
-		System.out.println("12-Eleminar el elemento de pocicion especifica");
-		System.out.println("13-Invertir vector");
+		System.out.println("4-Obtener catidad de elementos");
+		System.out.println("5-Mostrar todos los elementos.");
+		System.out.println("6-Mostrar el primer elemnto.");
+		System.out.println("7-Mostrar el ultimo elemento");
+		System.out.println("8-Aumentar el tamaño del arreglo");
+		System.out.println("9-Disminuir el tamaño del arreglo");
+		System.out.println("10-Insertar elemto en pocicion especifica.");
+		System.out.println("11-Eleminar el elemento de pocicion especifica");
+		System.out.println("12-Invertir vector");
+		System.out.println("13- Salir");
 		op=entrada.next();
-		
-		System.out.println("-------------3---------------");
-		int pocicion=ve3.obtenerPocicionInicio();
-		System.out.println("Se obtuvo el dato inicial");
-		System.out.println("-------------4---------------");
-		int pociFinal=ve3.obtenerPocicionFinal();
-		System.out.println("Se obtuvo el dato Final");
-		System.out.println("--------------5--------------");
-		System.out.println("La cantidad de elementos es: "+ve3.obtenerCnatidadElemtos());
-		System.out.println("----------------6----------");
-		ve3.mostrarVector();
-		System.out.println("----------------7----------");
-		ve3.mostrarPrimerElemento();
-		System.out.println("----------------8----------");
-		ve3.mostrarUltimoElemento();
-		System.out.println("----------------9----------");
-		System.out.println("Ingresa el tamaño que deseas para aumentar el tamaño");
-		int tamaño=entrada.nextInt();
-		ve3.aumentarTamañoArreglo(tamaño);
-		System.out.println("El tamaño a sido cambiado correctamente a: "+ve3.getEdades().length);
-		System.out.println("----------------10----------");
-		System.out.println("Ingresa el tamaño que deseas para disminuir el tamaño");
-		tamaño=entrada.nextInt();
-		ve3.disminurTamañoArreglo(tamaño);
-		System.out.println("El tamaño a sido reducido correctamente a: "+ve3.getEdades().length);
+		switch (op) {
+		case "1":
+			ve3.llenarVector();
+			break;
+		case "2":
+			System.out.println("--------Pocicion inicio ---------------");
+			int pocicion=ve3.obtenerPocicionInicio();
+			System.out.println("Se obtuvo de forma correcta");
+			break;
+		case "3":
+			int pociFinal=ve3.obtenerPocicionFinal();
+			System.out.println("Se ontuvo la pocicion final");
+			break;
+		case "4":
+			System.out.println("La cantidad de elementos es: "+ve3.obtenerCnatidadElemtos());
+			break;
+		case "5":
+			ve3.mostrarVector();
+			break;
+		case "6":
+			ve3.mostrarPrimerElemento();
+			break;
+		case "7":
+			ve3.mostrarUltimoElemento();
+			break;
+		case "8":
+			System.out.println("Ingresa el tamaño que deseas para aumentar el tamaño");
+			tamaño=entrada.nextInt();
+			ve3.aumentarTamañoArreglo(tamaño);
+			System.out.println("El tamaño a sido cambiado correctamente a: "+ve3.getEdades().length);
+			break;
+		case "9":
+			System.out.println("Ingresa el tamaño que deseas para disminuir el tamaño");
+			tamaño=entrada.nextInt();
+			ve3.disminurTamañoArreglo(tamaño);
+			System.out.println("El tamaño a sido reducido correctamente a: "+ve3.getEdades().length);
+			break;
+		case "10":
+			int poci=0,dato=0;
+			try {
+			System.out.println("Ingresa la pocicion que desas ingresar tu dato");
+			poci=entrada.nextInt();
+			System.out.println("Ingresa el dato que deseas ingresar");
+				dato=entrada.nextInt();
+			} catch (InputMismatchException e) {
+				System.out.println("Error no ingresate un dato numerico entero");
+			}
+			
+			break;
+		default:
+			break;
+		}// switch
 		System.out.println("----------------11----------");
 		ve3.insertarElementoPocicionEspecifica((byte) 100,(byte) 5);
 		System.out.println("----------------12----------");
 		ve3.eliminarElementoPocicionEspecifica(2);
 		System.out.println("----------------13----------");
 		ve3.invertirVector();
-		
+		}while(!op.equalsIgnoreCase("13"));
 	}
 
 }
